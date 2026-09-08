@@ -5,6 +5,7 @@
       "firebase.json",
       "firebase-debug.log",
       "**/.*",
+      "**/.git/**",
       "**/node_modules/**"
     ],
     "headers": [
