@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="js/theme.js"></script>
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/icon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anchor Trade Co. | Handyman Services, Oviedo FL</title>
+  <meta name="description" content="Licensed, multi-trade handyman company serving Oviedo, Winter Springs, Winter Park, Casselberry, Longwood & Lake Mary, FL. Electrical, plumbing, carpentry, painting, drywall & tile — one call, one crew, flat-rate quotes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== ICON SPRITE ===== -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-anchor" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="16" cy="7" r="3"/>
+    <path d="M16 10v17"/>
+    <path d="M9 15h14"/>
+    <path d="M7 20a9 9 0 0018 0"/>
+  </symbol>
+  <symbol id="icon-bolt" viewBox="0 0 32 32">
+    <path d="M17 3 7 17h7l-2 12 13-16h-7l2-10z"/>
+  </symbol>
+  <symbol id="icon-drop" viewBox="0 0 32 32">
+    <path d="M16 4C16 4 6 16.5 6 22a10 10 0 0 0 20 0C26 16.5 16 4 16 4Z"/>
+  </symbol>
+  <symbol id="icon-hammer" viewBox="0 0 32 32">
+    <g transform="rotate(45 16 16)">
+      <rect x="14" y="8" width="4" height="20" rx="1"/>
+      <rect x="8" y="4" width="16" height="7" rx="1.5"/>
+    </g>
+  </symbol>
+  <symbol id="icon-roller" viewBox="0 0 32 32">
+    <rect x="5" y="6" width="22" height="8" rx="4"/>
+    <rect x="14.5" y="13" width="3" height="15" rx="1.5" transform="rotate(8 16 20)"/>
+  </symbol>
+  <symbol id="icon-patch" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+    <rect x="5" y="5" width="22" height="22" rx="2"/>
+    <rect x="15" y="15" width="12" height="12" rx="1" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="icon-tile" viewBox="0 0 32 32">
+    <rect x="5" y="5" width="10" height="10" rx="2"/>
+    <rect x="17" y="5" width="10" height="10" rx="2"/>
+    <rect x="5" y="17" width="10" height="10" rx="2"/>
+    <rect x="17" y="17" width="10" height="10" rx="2"/>
+  </symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+  </symbol>
+  <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+  </symbol>
+  <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 13l4 4L19 7"/>
+  </symbol>
+  <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M13 6l6 6-6 6"/>
+  </symbol>
+  <symbol id="icon-camera" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="9" width="24" height="17" rx="3"/>
+    <circle cx="16" cy="17.5" r="5.5"/>
+    <path d="M12 9l1.5-4h5L20 9"/>
+  </symbol>
+  <symbol id="icon-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+  </symbol>
+</svg>
+
+<!-- ===== RAIL (persistent nav — replaces top navbar) ===== -->
+<header class="rail" id="rail">
+  <a href="#top" class="rail-logo" aria-label="Anchor Trade Co. — home">
+    <svg class="rail-logo-icon" width="22" height="22"><use href="#icon-anchor"/></svg>
+  </a>
+
+  <nav class="rail-trades" aria-label="Trades">
+    <button type="button" class="rail-icon" data-trade-index="0" data-trade-target="electrical">
+      <svg width="20" height="20"><use href="#icon-bolt"/></svg>
+      <span class="rail-tip">Electrical</span>
+    </button>
+    <button type="button" class="rail-icon" data-trade-index="1" data-trade-target="plumbing">
+      <svg width="20" height="20"><use href="#icon-drop"/></svg>
+      <span class="rail-tip">Plumbing</span>
+    </button>
+    <button type="button" class="rail-icon" data-trade-index="2" data-trade-target="carpentry">
+      <svg width="20" height="20"><use href="#icon-hammer"/></svg>
+      <span class="rail-tip">Carpentry</span>
+    </button>
+    <button type="button" class="rail-icon" data-trade-index="3" data-trade-target="painting">
+      <svg width="20" height="20"><use href="#icon-roller"/></svg>
+      <span class="rail-tip">Painting</span>
+    </button>
+    <button type="button" class="rail-icon" data-trade-index="4" data-trade-target="drywall">
+      <svg width="20" height="20"><use href="#icon-patch"/></svg>
+      <span class="rail-tip">Drywall &amp; Patching</span>
+    </button>
+    <button type="button" class="rail-icon" data-trade-index="5" data-trade-target="tile">
+      <svg width="20" height="20"><use href="#icon-tile"/></svg>
+      <span class="rail-tip">Tile &amp; Flooring</span>
+    </button>
+  </nav>
+
+  <div class="rail-bottom">
+    <a href="tel:+14075550142" class="rail-icon rail-icon--util" aria-label="Call Anchor Trade Co.">
+      <svg width="18" height="18"><use href="#icon-phone"/></svg>
+      <span class="rail-tip">(407) 555-0142</span>
+    </a>
+    <button type="button" class="rail-icon rail-icon--util theme-toggle" id="theme-toggle" aria-label="Toggle light and dark theme">
+      <svg class="theme-icon theme-icon--sun" width="18" height="18"><use href="#icon-sun"/></svg>
+      <svg class="theme-icon theme-icon--moon" width="18" height="18"><use href="#icon-moon"/></svg>
+    </button>
+    <a href="#quote" class="rail-cta">
+      <span>Get a Quote</span>
+    </a>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- ===== HERO ===== -->
+  <section id="top" class="hero">
+    <div class="hero-dotgrid" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow mono">Licensed &amp; Insured · Central Florida</p>
+        <h1 class="hero-title">EVERY TRADE.<br>ONE CALL.</h1>
+        <p class="hero-sub">Anchor Trade Co. is a multi-trade handyman crew covering electrical, plumbing, carpentry, painting, drywall and tile — one licensed pro, one flat-rate quote, no juggling contractors.</p>
+        <div class="hero-ctas">
+          <a href="#quote" class="btn btn--orange">Get a Free Quote <svg width="16" height="16"><use href="#icon-arrow"/></svg></a>
+          <a href="tel:+14075550142" class="btn btn--ghost"><svg width="15" height="15"><use href="#icon-phone"/></svg> (407) 555-0142</a>
+        </div>
+      </div>
+
+      <div class="hero-tickets" aria-hidden="true">
+        <div class="hero-ticket hero-ticket--1">
+          <svg width="18" height="18"><use href="#icon-check"/></svg>
+          <span>Flat-rate quotes — no hourly guessing</span>
+        </div>
+        <div class="hero-ticket hero-ticket--2">
+          <svg width="18" height="18"><use href="#icon-check"/></svg>
+          <span>Licensed, insured &amp; background-checked</span>
+        </div>
+        <div class="hero-ticket hero-ticket--3">
+          <svg width="18" height="18"><use href="#icon-check"/></svg>
+          <span>12-month workmanship guarantee</span>
+        </div>
+      </div>
+    </div>
+    <img class="hero-photo" src="images/photos/hero.jpg" alt="A tradesperson cutting a wood plank with a circular saw on a jobsite">
+  </section>
+
+  <!-- ===== TRADES — horizontal pinned strip ===== -->
+  <section id="trades" class="trades">
+    <div class="trades-head">
+      <p class="eyebrow mono">What We Cover</p>
+      <h2 class="section-title">Six trades.<br>One crew.</h2>
+      <p class="trades-scroll-hint mono">Scroll to browse <span aria-hidden="true">→</span></p>
+    </div>
+
+    <div class="trades-pin">
+      <div class="trades-track" id="trades-track">
+
+        <article class="trade-card" id="trade-electrical">
+          <div class="trade-card-media"><img src="images/photos/trade-electrical.jpg" alt="An electrician in a hard hat working inside an open home electrical panel"></div>
+          <div class="trade-card-body">
+            <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-bolt"/></svg></div>
+            <p class="mono trade-card-tag">01 — ELECTRICAL</p>
+            <h3 class="trade-card-name">Electrical</h3>
+            <ul class="trade-card-list">
+              <li>Panel &amp; breaker upgrades</li>
+              <li>Outlets, switches &amp; ceiling fans</li>
+              <li>Lighting installs &amp; code corrections</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="trade-card" id="trade-plumbing">
+          <div class="trade-card-media"><img src="images/photos/trade-plumbing.jpg" alt="A plumber working on pipes under a bathroom sink with a headlamp"></div>
+          <div class="trade-card-body">
+            <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-drop"/></svg></div>
+            <p class="mono trade-card-tag">02 — PLUMBING</p>
+            <h3 class="trade-card-name">Plumbing</h3>
+            <ul class="trade-card-list">
+              <li>Leak repair &amp; fixture swaps</li>
+              <li>Garbage disposals &amp; water heaters</li>
+              <li>Clogged &amp; slow drains</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="trade-card" id="trade-carpentry">
+          <div class="trade-card-media"><img src="images/photos/trade-carpentry.jpg" alt="A carpenter in a workshop planing a piece of wood on a workbench"></div>
+          <div class="trade-card-body">
+            <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-hammer"/></svg></div>
+            <p class="mono trade-card-tag">03 — CARPENTRY</p>
+            <h3 class="trade-card-name">Carpentry</h3>
+            <ul class="trade-card-list">
+              <li>Trim, molding &amp; built-ins</li>
+              <li>Door &amp; cabinet repair</li>
+              <li>Deck framing &amp; fence repair</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="trade-card" id="trade-painting">
+          <div class="trade-card-media"><img src="images/photos/trade-painting.jpg" alt="A painter on a scaffold rolling paint onto a ceiling"></div>
+          <div class="trade-card-body">
+            <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-roller"/></svg></div>
+            <p class="mono trade-card-tag">04 — PAINTING</p>
+            <h3 class="trade-card-name">Painting</h3>
+            <ul class="trade-card-list">
+              <li>Interior &amp; exterior repaint</li>
+              <li>Cabinet refinishing</li>
+              <li>Trim &amp; accent walls</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="trade-card" id="trade-drywall">
+          <div class="trade-card-media"><img src="images/photos/trade-drywall.jpg" alt="A worker skim-coating and patching a drywall surface"></div>
+          <div class="trade-card-body">
+            <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-patch"/></svg></div>
+            <p class="mono trade-card-tag">05 — DRYWALL</p>
+            <h3 class="trade-card-name">Drywall &amp; Patching</h3>
+            <ul class="trade-card-list">
+              <li>Hole &amp; crack repair</li>
+              <li>Texture matching</li>
+              <li>Popcorn ceiling removal</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="trade-card" id="trade-tile">
+          <div class="trade-card-media"><img src="images/photos/trade-tile.jpg" alt="A finished blue and white patterned tile floor lit by sunlight"></div>
+          <div class="trade-card-body">
+            <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-tile"/></svg></div>
+            <p class="mono trade-card-tag">06 — TILE</p>
+            <h3 class="trade-card-name">Tile &amp; Flooring</h3>
+            <ul class="trade-card-list">
+              <li>Bathroom &amp; kitchen tile</li>
+              <li>Grout &amp; caulk renewal</li>
+              <li>Luxury vinyl plank &amp; subfloor</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS — job ticket stubs ===== -->
+  <section id="process" class="process">
+    <div class="process-head">
+      <p class="eyebrow mono">How It Works</p>
+      <h2 class="section-title">From call to<br>closed ticket.</h2>
+    </div>
+
+    <div class="process-stubs">
+      <div class="stub-thread" aria-hidden="true"></div>
+
+      <div class="stub" data-n="1">
+        <div class="stub-punch" aria-hidden="true"></div>
+        <p class="mono stub-num">TICKET 01</p>
+        <h3 class="stub-title">Tell Us The Job</h3>
+        <p class="stub-desc">Call, text, or submit a work order online. A few photos help us quote it right the first time.</p>
+      </div>
+
+      <div class="stub" data-n="2">
+        <div class="stub-punch" aria-hidden="true"></div>
+        <p class="mono stub-num">TICKET 02</p>
+        <h3 class="stub-title">Get A Flat-Rate Quote</h3>
+        <p class="stub-desc">No hourly guessing games. You see and approve the price before anyone picks up a tool.</p>
+      </div>
+
+      <div class="stub" data-n="3">
+        <div class="stub-punch" aria-hidden="true"></div>
+        <p class="mono stub-num">TICKET 03</p>
+        <h3 class="stub-title">We Show Up &amp; Fix It</h3>
+        <p class="stub-desc">One licensed pro, on time, in a fully-stocked truck. Most jobs close out in a single visit.</p>
+      </div>
+
+      <div class="stub" data-n="4">
+        <div class="stub-punch" aria-hidden="true"></div>
+        <p class="mono stub-num">TICKET 04</p>
+        <h3 class="stub-title">Work&rsquo;s Guaranteed</h3>
+        <p class="stub-desc">Every job, every trade, backed by a 12-month workmanship guarantee. In writing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section id="why" class="stats">
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="stat-num mono" data-count="14">0</span><span class="stat-suffix mono">+</span>
+        <p class="stat-label">Years Trading</p>
+      </div>
+      <div class="stat">
+        <span class="stat-num mono" data-count="6">0</span><span class="stat-suffix mono"></span>
+        <p class="stat-label">Licensed Trades</p>
+      </div>
+      <div class="stat">
+        <span class="stat-num mono" data-count="2300">0</span><span class="stat-suffix mono">+</span>
+        <p class="stat-label">Jobs Completed</p>
+      </div>
+      <div class="stat">
+        <span class="stat-num mono" data-count="49" data-decimal="10">0</span><span class="stat-suffix mono">★</span>
+        <p class="stat-label">Average Rating</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY — recent work ===== -->
+  <section id="work" class="gallery">
+    <div class="gallery-head">
+      <p class="eyebrow mono">Recent Work</p>
+      <h2 class="section-title">Jobs we&rsquo;ve<br>closed out.</h2>
+    </div>
+
+    <div class="gallery-grid">
+      <figure class="gallery-item gallery-item--pair">
+        <div class="gallery-pair">
+          <div class="gallery-pair-half">
+            <img src="images/photos/work-deck-before.jpg" alt="A wooden deck under construction, showing exposed floor joists and framing">
+            <span class="gallery-pair-label mono">BEFORE</span>
+          </div>
+          <div class="gallery-pair-half">
+            <img src="images/photos/work-deck-after.jpg" alt="A finished multi-level wooden deck with patio furniture behind a house">
+            <span class="gallery-pair-label mono">AFTER</span>
+          </div>
+        </div>
+        <figcaption>
+          <span class="gallery-tag mono">CARPENTRY — WINTER SPRINGS</span>
+          <span class="gallery-title">Deck Rebuild</span>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/photos/work-bathroom.jpg" alt="A finished modern bathroom with a glass walk-in shower and dual vanity">
+        <figcaption>
+          <span class="gallery-tag mono">TILE — OVIEDO</span>
+          <span class="gallery-title">Bathroom Remodel</span>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="images/photos/work-fence.jpg" alt="A repaired wooden rail fence along a grassy property line">
+        <figcaption>
+          <span class="gallery-tag mono">CARPENTRY — LAKE MARY</span>
+          <span class="gallery-title">Fence Repair</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== DISPATCH / SERVICE AREA ===== -->
+  <section id="area" class="dispatch">
+    <div class="dispatch-inner">
+      <div class="dispatch-copy">
+        <p class="eyebrow mono">Service Area</p>
+        <h2 class="section-title">Dispatched<br>daily across<br>Central Florida.</h2>
+        <p class="dispatch-promise"><svg width="18" height="18"><use href="#icon-pin"/></svg> Most jobs quoted same day &amp; on-site within 48 hours. 24/7 line for water &amp; electrical emergencies.</p>
+      </div>
+      <ul class="dispatch-towns">
+        <li class="town-chip mono">Oviedo</li>
+        <li class="town-chip mono">Winter Springs</li>
+        <li class="town-chip mono">Winter Park</li>
+        <li class="town-chip mono">Casselberry</li>
+        <li class="town-chip mono">Longwood</li>
+        <li class="town-chip mono">Lake Mary</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== REVIEWS ===== -->
+  <section id="reviews" class="reviews">
+    <div class="reviews-head">
+      <p class="eyebrow mono">Customer Tickets</p>
+      <h2 class="section-title">What the<br>neighborhood says.</h2>
+    </div>
+
+    <div class="reviews-grid">
+      <article class="review-card">
+        <div class="review-avatar mono">DK</div>
+        <p class="review-quote">&ldquo;Showed up on time, fixed the outlet, and caught a wiring issue I didn&rsquo;t even know about. Fixed both for the quoted price.&rdquo;</p>
+        <p class="review-name mono">D. K. — Oviedo</p>
+      </article>
+      <article class="review-card">
+        <div class="review-avatar mono">MR</div>
+        <p class="review-quote">&ldquo;Our deck was falling apart. Anchor Trade rebuilt it in two days and it looks better than new.&rdquo;</p>
+        <p class="review-name mono">M. R. — Winter Springs</p>
+      </article>
+      <article class="review-card">
+        <div class="review-avatar mono">ST</div>
+        <p class="review-quote">&ldquo;Finally a handyman company that answers the phone. Flat-rate quote, no surprises on the invoice.&rdquo;</p>
+        <p class="review-name mono">S. T. — Winter Park</p>
+      </article>
+      <article class="review-card">
+        <div class="review-avatar mono">JP</div>
+        <p class="review-quote">&ldquo;Patched drywall after a leak and matched the texture perfectly. Couldn&rsquo;t tell where the damage was.&rdquo;</p>
+        <p class="review-name mono">J. P. — Casselberry</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE FORM — work order ===== -->
+  <section id="quote" class="quote">
+    <div class="quote-inner">
+      <div class="quote-copy">
+        <p class="eyebrow mono">Get A Free Quote</p>
+        <h2 class="section-title">Submit a<br>work order.</h2>
+        <p class="quote-sub">Tell us what needs fixing. We&rsquo;ll text or call back with a flat-rate quote — usually same day.</p>
+        <ul class="quote-points">
+          <li><svg width="16" height="16"><use href="#icon-check"/></svg> No obligation, no pressure</li>
+          <li><svg width="16" height="16"><use href="#icon-check"/></svg> Photos help us quote it right</li>
+          <li><svg width="16" height="16"><use href="#icon-check"/></svg> We reply within business hours</li>
+        </ul>
+      </div>
+
+      <div class="quote-ticket">
+        <form id="quote-form" novalidate>
+          <div class="ticket-head">
+            <span class="mono ticket-num" id="ticket-num">WO-000000</span>
+            <span class="mono ticket-date" id="ticket-date">--/--/----</span>
+          </div>
+
+          <div class="form-row form-row--2">
+            <div class="form-field">
+              <label for="qf-name">Full Name</label>
+              <input id="qf-name" name="name" type="text" required autocomplete="name">
+            </div>
+            <div class="form-field">
+              <label for="qf-phone">Phone Number</label>
+              <input id="qf-phone" name="phone" type="tel" required autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="form-row form-row--2">
+            <div class="form-field">
+              <label for="qf-email">Email</label>
+              <input id="qf-email" name="email" type="email" autocomplete="email">
+            </div>
+            <div class="form-field">
+              <label for="qf-trade">Trade Needed</label>
+              <select id="qf-trade" name="trade" required>
+                <option value="" disabled selected>Select a trade&hellip;</option>
+                <option>Electrical</option>
+                <option>Plumbing</option>
+                <option>Carpentry</option>
+                <option>Painting</option>
+                <option>Drywall &amp; Patching</option>
+                <option>Tile &amp; Flooring</option>
+                <option>Not sure / Multiple</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="qf-message">Describe The Job</label>
+            <textarea id="qf-message" name="message" rows="4" required placeholder="What needs fixing, and where? The more detail, the more accurate the quote."></textarea>
+          </div>
+
+          <div class="dropzone" id="dropzone">
+            <input type="file" id="qf-file" name="file" class="dropzone-input" accept=".jpg,.jpeg,.png,.heic,.pdf">
+            <svg width="22" height="22"><use href="#icon-camera"/></svg>
+            <p id="dropzone-text">Drop a photo of the job, or <span>browse</span></p>
+          </div>
+
+          <button type="submit" class="btn btn--orange quote-submit">Submit Work Order <svg width="16" height="16"><use href="#icon-arrow"/></svg></button>
+          <p class="quote-fineprint mono">Or just call it in — (407) 555-0142</p>
+        </form>
+
+        <div class="quote-success" id="quote-success" hidden>
+          <svg width="40" height="40"><use href="#icon-check"/></svg>
+          <h3>Work Order Received</h3>
+          <p>Ticket <span id="success-ticket" class="mono"></span> is in the queue. We&rsquo;ll reach out shortly with a flat-rate quote.</p>
+          <button type="button" class="btn btn--ghost" id="quote-reset">Submit Another</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="footer-logo">
+          <svg width="24" height="24"><use href="#icon-anchor"/></svg>
+          <span>Anchor Trade Co.</span>
+        </a>
+        <p>Multi-trade handyman services for Central Florida. Licensed, insured, and backed by a 12-month guarantee on every job.</p>
+        <p class="mono footer-license">FL Lic. #HC-04281</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="mono">Trades</h4>
+        <ul>
+          <li><button type="button" data-trade-index="0">Electrical</button></li>
+          <li><button type="button" data-trade-index="1">Plumbing</button></li>
+          <li><button type="button" data-trade-index="2">Carpentry</button></li>
+          <li><button type="button" data-trade-index="3">Painting</button></li>
+          <li><button type="button" data-trade-index="4">Drywall &amp; Patching</button></li>
+          <li><button type="button" data-trade-index="5">Tile &amp; Flooring</button></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="mono">Contact</h4>
+        <ul class="footer-contact">
+          <li><a href="tel:+14075550142">(407) 555-0142</a></li>
+          <li><a href="mailto:hello@anchortradeco.com">hello@anchortradeco.com</a></li>
+          <li>Mon&ndash;Sat, 7am&ndash;7pm</li>
+          <li>24/7 emergency line</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="mono">Service Area</h4>
+        <ul class="footer-contact">
+          <li>Oviedo &middot; Winter Springs</li>
+          <li>Winter Park &middot; Casselberry</li>
+          <li>Longwood &middot; Lake Mary</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Anchor Trade Co. All rights reserved.</span>
+      <span class="footer-tag mono">EVERY TRADE. ONE CALL.</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
