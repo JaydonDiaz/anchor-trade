@@ -446,13 +446,12 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 .process {
   position: relative;
   z-index: 3;
-  background: var(--paper);
-  color: var(--ink-text);
+  background: var(--bg-2);
+  color: var(--text);
   padding: clamp(4rem, 9vh, 6.5rem) clamp(1.5rem, 5vw, 4rem);
 }
 
 .process-head { max-width: 1400px; margin: 0 auto 3.5rem; }
-.process .eyebrow { color: var(--orange-dark); }
 
 .process-stubs {
   position: relative;
@@ -469,7 +468,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   left: 3%;
   right: 3%;
   height: 2px;
-  background-image: linear-gradient(90deg, rgba(24, 22, 20, 0.28) 0 10px, transparent 10px 20px);
+  background-image: linear-gradient(90deg, var(--border) 0 10px, transparent 10px 20px);
   background-size: 20px 2px;
   transform-origin: left center;
   transform: scaleX(0);
@@ -478,6 +477,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 .stub {
   position: relative;
   background: #fffdf8;
+  color: var(--ink-text);
   border: 1px solid rgba(24, 22, 20, 0.12);
   border-radius: 4px;
   padding: 2.2rem 1.5rem 1.7rem;
@@ -492,7 +492,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--paper);
+  background: var(--bg-2);
   box-shadow: inset 0 1px 3px rgba(24, 22, 20, 0.25);
 }
 
@@ -680,14 +680,14 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 .review-name { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; }
 
 /* ============================================================
-   QUOTE FORM — pinned paper section
+   QUOTE FORM — theme reactive (the ticket card itself stays paper)
    ============================================================ */
 
 .quote {
   position: relative;
   z-index: 8;
-  background: var(--paper);
-  color: var(--ink-text);
+  background: var(--bg-2);
+  color: var(--text);
   padding: clamp(4rem, 9vh, 6.5rem) clamp(1.5rem, 5vw, 4rem);
 }
 
@@ -700,16 +700,16 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   align-items: start;
 }
 
-.quote .eyebrow { color: var(--orange-dark); }
-.quote-sub { color: #5a5348; max-width: 40ch; line-height: 1.6; margin-bottom: 1.6rem; }
+.quote-sub { color: var(--muted); max-width: 40ch; line-height: 1.6; margin-bottom: 1.6rem; }
 
 .quote-points { display: flex; flex-direction: column; gap: 0.6rem; }
-.quote-points li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.92rem; color: #423d34; }
-.quote-points svg { color: var(--orange-dark); flex-shrink: 0; }
+.quote-points li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.92rem; color: var(--text); }
+.quote-points svg { color: var(--accent); flex-shrink: 0; }
 
 .quote-ticket {
   position: relative;
   background: #fffdf8;
+  color: var(--ink-text);
   border: 1px solid rgba(24, 22, 20, 0.14);
   border-radius: 16px;
   padding: 2rem clamp(1.5rem, 3vw, 2.4rem) 2.2rem;
