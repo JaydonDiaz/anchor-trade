@@ -143,7 +143,6 @@
 
     tradeModalLastFocused = document.activeElement;
     tradeModal.hidden = false;
-    document.body.style.overflow = 'hidden';
 
     gsap.set(tradeModalBackdrop, { opacity: 0 });
     gsap.set(tradeModalPanel, { opacity: 0, y: 24, scale: 0.96 });
@@ -161,7 +160,6 @@
       opacity: 0, duration: 0.22, ease: 'power2.in',
       onComplete: function () {
         tradeModal.hidden = true;
-        document.body.style.overflow = '';
         if (tradeModalLastFocused && typeof tradeModalLastFocused.focus === 'function') {
           tradeModalLastFocused.focus();
         }
@@ -188,9 +186,29 @@
     });
   }
 
+  function scrollToTradeCard(index) {
+    var cards = document.querySelectorAll('.trade-card');
+    var card = cards[index];
+    if (!card) return;
+
+    if (window.innerWidth < 900) {
+      var tradesSection = document.getElementById('trades');
+      if (tradesSection) tradesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      return;
+    }
+
+    var st = ScrollTrigger.getById('tradesPin');
+    if (!st) return;
+    var progress = cards.length > 1 ? index / (cards.length - 1) : 0;
+    var target = st.start + progress * (st.end - st.start);
+    window.scrollTo({ top: target, behavior: 'smooth' });
+  }
+
   document.querySelectorAll('[data-trade-index]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var idx = parseInt(btn.getAttribute('data-trade-index'), 10);
+      scrollToTradeCard(idx);
       openTradeModal(idx);
       gsap.fromTo(btn, { scale: 1 }, { scale: 0.86, duration: 0.1, yoyo: true, repeat: 1, ease: 'power1.inOut' });
     });
