@@ -28,7 +28,6 @@
   var TRADE_INFO = [
     {
       icon: 'icon-bolt',
-      tag: 'ELECTRICAL',
       name: 'Electrical',
       formValue: 'Electrical',
       body: "From flickering lights to a full panel upgrade, our licensed electricians handle residential work safely and up to code. Every job is permitted where required and backed by our 12-month guarantee.",
@@ -42,7 +41,6 @@
     },
     {
       icon: 'icon-drop',
-      tag: 'PLUMBING',
       name: 'Plumbing',
       formValue: 'Plumbing',
       body: "Leaks, clogs, and failing fixtures don't wait for a convenient time. We diagnose the problem on-site and quote a flat rate before any work starts — no surprise charges once the wall's already open.",
@@ -56,7 +54,6 @@
     },
     {
       icon: 'icon-hammer',
-      tag: 'CARPENTRY',
       name: 'Carpentry',
       formValue: 'Carpentry',
       body: 'Trim work, built-ins, and structural repairs need a steady hand and the right tools — both of which our carpenters bring on every visit, from a loose stair tread to a full deck rebuild.',
@@ -70,7 +67,6 @@
     },
     {
       icon: 'icon-roller',
-      tag: 'PAINTING',
       name: 'Painting',
       formValue: 'Painting',
       body: "A fresh coat done right starts with prep — patched walls, taped edges, and primer where it's needed. We bring drop cloths and clean up after ourselves, whether it's one accent wall or a full exterior.",
@@ -84,7 +80,6 @@
     },
     {
       icon: 'icon-patch',
-      tag: 'DRYWALL',
       name: 'Drywall & Patching',
       formValue: 'Drywall & Patching',
       body: "Holes, cracks, and water damage patched so the repair disappears — not just fills in. We match existing texture (orange peel, knockdown, smooth) so there's no visible seam once it's painted.",
@@ -98,7 +93,6 @@
     },
     {
       icon: 'icon-tile',
-      tag: 'TILE',
       name: 'Tile & Flooring',
       formValue: 'Tile & Flooring',
       body: 'From a cracked bathroom tile to a full kitchen backsplash, we handle layout, cutting, and grout work with a level eye and clean lines. Luxury vinyl plank and subfloor repair are on the truck too.',
@@ -117,7 +111,6 @@
   var tradeModalPanel = tradeModal ? tradeModal.querySelector('.trade-modal-panel') : null;
   var tradeModalClose = document.getElementById('trade-modal-close');
   var tradeModalIconUse = document.getElementById('trade-modal-icon-use');
-  var tradeModalTag = document.getElementById('trade-modal-tag');
   var tradeModalTitle = document.getElementById('trade-modal-title');
   var tradeModalBody = document.getElementById('trade-modal-body');
   var tradeModalList = document.getElementById('trade-modal-list');
@@ -130,7 +123,6 @@
     if (!info || !tradeModal) return;
 
     tradeModalIconUse.setAttribute('href', '#' + info.icon);
-    tradeModalTag.textContent = info.tag;
     tradeModalTitle.textContent = info.name;
     tradeModalBody.textContent = info.body;
     tradeModalList.innerHTML = '';
