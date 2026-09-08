@@ -21,32 +21,188 @@
     });
   }
 
-  function scrollToTradeIndex(index) {
-    var cards = document.querySelectorAll('.trade-card');
-    var card = cards[index];
-    if (!card) return;
+  /* ============================================================
+     Trade detail modal
+     ============================================================ */
 
-    if (window.innerWidth < 900) {
-      var tradesSection = document.getElementById('trades');
-      if (tradesSection) tradesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.setTimeout(function () {
-        card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      }, 450);
-      return;
+  var TRADE_INFO = [
+    {
+      icon: 'icon-bolt',
+      tag: '01 — ELECTRICAL',
+      name: 'Electrical',
+      formValue: 'Electrical',
+      body: "From flickering lights to a full panel upgrade, our licensed electricians handle residential work safely and up to code. Every job is permitted where required and backed by our 12-month guarantee.",
+      bullets: [
+        'Panel & breaker upgrades',
+        'Outlet, switch & GFCI repair',
+        'Ceiling fans & lighting installs',
+        'Code corrections & inspection fixes',
+        'EV charger & appliance circuits'
+      ]
+    },
+    {
+      icon: 'icon-drop',
+      tag: '02 — PLUMBING',
+      name: 'Plumbing',
+      formValue: 'Plumbing',
+      body: "Leaks, clogs, and failing fixtures don't wait for a convenient time. We diagnose the problem on-site and quote a flat rate before any work starts — no surprise charges once the wall's already open.",
+      bullets: [
+        'Leak detection & repair',
+        'Faucet, toilet & fixture swaps',
+        'Garbage disposal installs',
+        'Water heater service & replacement',
+        'Clogged & slow drain clearing'
+      ]
+    },
+    {
+      icon: 'icon-hammer',
+      tag: '03 — CARPENTRY',
+      name: 'Carpentry',
+      formValue: 'Carpentry',
+      body: 'Trim work, built-ins, and structural repairs need a steady hand and the right tools — both of which our carpenters bring on every visit, from a loose stair tread to a full deck rebuild.',
+      bullets: [
+        'Trim, molding & baseboards',
+        'Custom shelving & built-ins',
+        'Door, cabinet & drawer repair',
+        'Deck framing & repair',
+        'Fence repair & replacement'
+      ]
+    },
+    {
+      icon: 'icon-roller',
+      tag: '04 — PAINTING',
+      name: 'Painting',
+      formValue: 'Painting',
+      body: "A fresh coat done right starts with prep — patched walls, taped edges, and primer where it's needed. We bring drop cloths and clean up after ourselves, whether it's one accent wall or a full exterior.",
+      bullets: [
+        'Interior wall & ceiling painting',
+        'Exterior siding & trim',
+        'Cabinet refinishing',
+        'Accent walls & trim detail',
+        'Drywall prep before painting'
+      ]
+    },
+    {
+      icon: 'icon-patch',
+      tag: '05 — DRYWALL',
+      name: 'Drywall & Patching',
+      formValue: 'Drywall & Patching',
+      body: "Holes, cracks, and water damage patched so the repair disappears — not just fills in. We match existing texture (orange peel, knockdown, smooth) so there's no visible seam once it's painted.",
+      bullets: [
+        'Hole & crack repair',
+        'Texture matching',
+        'Popcorn ceiling removal',
+        'Water damage patching',
+        'New drywall installation'
+      ]
+    },
+    {
+      icon: 'icon-tile',
+      tag: '06 — TILE',
+      name: 'Tile & Flooring',
+      formValue: 'Tile & Flooring',
+      body: 'From a cracked bathroom tile to a full kitchen backsplash, we handle layout, cutting, and grout work with a level eye and clean lines. Luxury vinyl plank and subfloor repair are on the truck too.',
+      bullets: [
+        'Bathroom & kitchen tile',
+        'Backsplash installation',
+        'Grout & caulk renewal',
+        'Luxury vinyl plank flooring',
+        'Subfloor repair'
+      ]
     }
+  ];
 
-    var st = ScrollTrigger.getById('tradesPin');
-    if (!st) return;
-    var progress = cards.length > 1 ? index / (cards.length - 1) : 0;
-    var target = st.start + progress * (st.end - st.start);
-    window.scrollTo({ top: target, behavior: 'smooth' });
+  var tradeModal = document.getElementById('trade-modal');
+  var tradeModalBackdrop = document.getElementById('trade-modal-backdrop');
+  var tradeModalPanel = tradeModal ? tradeModal.querySelector('.trade-modal-panel') : null;
+  var tradeModalClose = document.getElementById('trade-modal-close');
+  var tradeModalIconUse = document.getElementById('trade-modal-icon-use');
+  var tradeModalTag = document.getElementById('trade-modal-tag');
+  var tradeModalTitle = document.getElementById('trade-modal-title');
+  var tradeModalBody = document.getElementById('trade-modal-body');
+  var tradeModalList = document.getElementById('trade-modal-list');
+  var tradeModalQuoteBtn = document.getElementById('trade-modal-quote');
+  var tradeModalLastFocused = null;
+  var tradeModalCurrentValue = '';
+
+  function openTradeModal(index) {
+    var info = TRADE_INFO[index];
+    if (!info || !tradeModal) return;
+
+    tradeModalIconUse.setAttribute('href', '#' + info.icon);
+    tradeModalTag.textContent = info.tag;
+    tradeModalTitle.textContent = info.name;
+    tradeModalBody.textContent = info.body;
+    tradeModalList.innerHTML = '';
+    info.bullets.forEach(function (b) {
+      var li = document.createElement('li');
+      li.textContent = b;
+      tradeModalList.appendChild(li);
+    });
+    tradeModalCurrentValue = info.formValue;
+
+    tradeModalLastFocused = document.activeElement;
+    tradeModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+
+    gsap.set(tradeModalBackdrop, { opacity: 0 });
+    gsap.set(tradeModalPanel, { opacity: 0, y: 24, scale: 0.96 });
+    gsap.to(tradeModalBackdrop, { opacity: 1, duration: 0.25, ease: 'power2.out' });
+    gsap.to(tradeModalPanel, {
+      opacity: 1, y: 0, scale: 1, duration: 0.4, ease: 'power3.out',
+      onComplete: function () { if (tradeModalClose) tradeModalClose.focus(); }
+    });
+  }
+
+  function closeTradeModal() {
+    if (!tradeModal || tradeModal.hidden) return;
+    gsap.to(tradeModalPanel, { opacity: 0, y: 16, scale: 0.97, duration: 0.2, ease: 'power2.in' });
+    gsap.to(tradeModalBackdrop, {
+      opacity: 0, duration: 0.22, ease: 'power2.in',
+      onComplete: function () {
+        tradeModal.hidden = true;
+        document.body.style.overflow = '';
+        if (tradeModalLastFocused && typeof tradeModalLastFocused.focus === 'function') {
+          tradeModalLastFocused.focus();
+        }
+      }
+    });
+  }
+
+  if (tradeModalBackdrop) tradeModalBackdrop.addEventListener('click', closeTradeModal);
+  if (tradeModalClose) tradeModalClose.addEventListener('click', closeTradeModal);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && tradeModal && !tradeModal.hidden) closeTradeModal();
+  });
+  if (tradeModalQuoteBtn) {
+    tradeModalQuoteBtn.addEventListener('click', function () {
+      var select = document.getElementById('qf-trade');
+      if (select && tradeModalCurrentValue) select.value = tradeModalCurrentValue;
+      closeTradeModal();
+      var quoteSection = document.getElementById('quote');
+      if (quoteSection) {
+        window.setTimeout(function () {
+          quoteSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 120);
+      }
+    });
   }
 
   document.querySelectorAll('[data-trade-index]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var idx = parseInt(btn.getAttribute('data-trade-index'), 10);
-      scrollToTradeIndex(idx);
+      openTradeModal(idx);
       gsap.fromTo(btn, { scale: 1 }, { scale: 0.86, duration: 0.1, yoyo: true, repeat: 1, ease: 'power1.inOut' });
+    });
+  });
+
+  document.querySelectorAll('.trade-card').forEach(function (card, i) {
+    card.addEventListener('click', function () { openTradeModal(i); });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openTradeModal(i);
+      }
     });
   });
 

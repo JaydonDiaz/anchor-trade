@@ -74,6 +74,9 @@
   <symbol id="icon-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
   </symbol>
+  <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 6l12 12M18 6L6 18"/>
+  </symbol>
 </svg>
 
 <!-- ===== RAIL (persistent nav — replaces top navbar) ===== -->
@@ -169,7 +172,7 @@
     <div class="trades-pin">
       <div class="trades-track" id="trades-track">
 
-        <article class="trade-card" id="trade-electrical">
+        <article class="trade-card" id="trade-electrical" role="button" tabindex="0" aria-label="View details for Electrical">
           <div class="trade-card-media"><img src="images/photos/trade-electrical.jpg" alt="An electrician in a hard hat working inside an open home electrical panel"></div>
           <div class="trade-card-body">
             <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-bolt"/></svg></div>
@@ -183,7 +186,7 @@
           </div>
         </article>
 
-        <article class="trade-card" id="trade-plumbing">
+        <article class="trade-card" id="trade-plumbing" role="button" tabindex="0" aria-label="View details for Plumbing">
           <div class="trade-card-media"><img src="images/photos/trade-plumbing.jpg" alt="A plumber working on pipes under a bathroom sink with a headlamp"></div>
           <div class="trade-card-body">
             <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-drop"/></svg></div>
@@ -197,7 +200,7 @@
           </div>
         </article>
 
-        <article class="trade-card" id="trade-carpentry">
+        <article class="trade-card" id="trade-carpentry" role="button" tabindex="0" aria-label="View details for Carpentry">
           <div class="trade-card-media"><img src="images/photos/trade-carpentry.jpg" alt="A carpenter in a workshop planing a piece of wood on a workbench"></div>
           <div class="trade-card-body">
             <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-hammer"/></svg></div>
@@ -211,7 +214,7 @@
           </div>
         </article>
 
-        <article class="trade-card" id="trade-painting">
+        <article class="trade-card" id="trade-painting" role="button" tabindex="0" aria-label="View details for Painting">
           <div class="trade-card-media"><img src="images/photos/trade-painting.jpg" alt="A painter on a scaffold rolling paint onto a ceiling"></div>
           <div class="trade-card-body">
             <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-roller"/></svg></div>
@@ -225,7 +228,7 @@
           </div>
         </article>
 
-        <article class="trade-card" id="trade-drywall">
+        <article class="trade-card" id="trade-drywall" role="button" tabindex="0" aria-label="View details for Drywall &amp; Patching">
           <div class="trade-card-media"><img src="images/photos/trade-drywall.jpg" alt="A worker skim-coating and patching a drywall surface"></div>
           <div class="trade-card-body">
             <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-patch"/></svg></div>
@@ -239,7 +242,7 @@
           </div>
         </article>
 
-        <article class="trade-card" id="trade-tile">
+        <article class="trade-card" id="trade-tile" role="button" tabindex="0" aria-label="View details for Tile &amp; Flooring">
           <div class="trade-card-media"><img src="images/photos/trade-tile.jpg" alt="A finished blue and white patterned tile floor lit by sunlight"></div>
           <div class="trade-card-body">
             <div class="trade-card-icon"><svg width="22" height="22"><use href="#icon-tile"/></svg></div>
@@ -540,6 +543,28 @@
   </footer>
 
 </main>
+
+<!-- ===== TRADE DETAIL MODAL ===== -->
+<div class="trade-modal" id="trade-modal" hidden>
+  <div class="trade-modal-backdrop" id="trade-modal-backdrop"></div>
+  <div class="trade-modal-panel" role="dialog" aria-modal="true" aria-labelledby="trade-modal-title">
+    <button type="button" class="trade-modal-close" id="trade-modal-close" aria-label="Close">
+      <svg width="18" height="18"><use href="#icon-x"/></svg>
+    </button>
+    <div class="trade-modal-icon" id="trade-modal-icon">
+      <svg width="24" height="24"><use id="trade-modal-icon-use" href="#icon-bolt"/></svg>
+    </div>
+    <p class="mono trade-modal-tag" id="trade-modal-tag"></p>
+    <h3 class="trade-modal-title" id="trade-modal-title"></h3>
+    <p class="trade-modal-body" id="trade-modal-body"></p>
+    <ul class="trade-modal-list" id="trade-modal-list"></ul>
+    <div class="trade-modal-actions">
+      <button type="button" class="btn btn--orange" id="trade-modal-quote">
+        Get a Quote for This <svg width="16" height="16"><use href="#icon-arrow"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
