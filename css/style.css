@@ -35,6 +35,7 @@
   --muted-2: #7a746a;
   --border: var(--line-on-ink);
   --shadow: var(--shadow-ink);
+  --accent: var(--orange); /* bright orange pops on dark; swaps to orange-dark on light for contrast */
 }
 
 html[data-theme="light"] {
@@ -45,6 +46,7 @@ html[data-theme="light"] {
   --text: var(--ink-text);
   --muted: #6b6357;
   --muted-2: #948c7c;
+  --accent: var(--orange-dark);
   --border: var(--line-on-paper);
   --shadow: var(--shadow-paper);
 }
@@ -78,7 +80,7 @@ svg { display: block; flex-shrink: 0; }
   font-size: 0.7rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--accent);
   margin-bottom: 0.9rem;
   font-weight: 700;
 }
@@ -122,8 +124,8 @@ svg { display: block; flex-shrink: 0; }
   color: var(--text);
 }
 .btn--ghost:hover {
-  border-color: var(--orange);
-  color: var(--orange);
+  border-color: var(--accent);
+  color: var(--accent);
   transform: translateY(-3px);
 }
 
@@ -285,8 +287,6 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   padding-bottom: 3rem;
 }
 
-.hero-eyebrow { color: var(--orange); }
-
 .hero-title {
   font-family: 'Bebas Neue', 'Oswald', sans-serif;
   font-size: clamp(3.4rem, 7.2vw, 6.6rem);
@@ -328,7 +328,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   box-shadow: 0 18px 36px var(--shadow);
   border: 1px dashed var(--border);
 }
-.hero-ticket svg { color: var(--orange); flex-shrink: 0; }
+.hero-ticket svg { color: var(--accent); flex-shrink: 0; }
 
 .hero-photo {
   position: relative;
@@ -428,7 +428,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--orange);
+  background: var(--orange-dark);
 }
 
 /* ============================================================
@@ -517,7 +517,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 
 .stat-num, .stat-suffix {
   font-size: clamp(2.2rem, 4.4vw, 3.4rem);
-  color: var(--orange);
+  color: var(--accent);
   font-weight: 700;
 }
 .stat-label {
@@ -576,7 +576,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 .gallery-item--pair { grid-column: span 2; }
 
 .gallery-item figcaption { display: flex; flex-direction: column; gap: 0.25rem; }
-.gallery-tag { font-size: 0.66rem; letter-spacing: 0.12em; color: var(--orange); }
+.gallery-tag { font-size: 0.66rem; letter-spacing: 0.12em; color: var(--accent); }
 .gallery-title { font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 1.05rem; text-transform: uppercase; }
 
 /* ============================================================
@@ -612,7 +612,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   max-width: 42ch;
   line-height: 1.5;
 }
-.dispatch-promise svg { color: var(--orange); flex-shrink: 0; }
+.dispatch-promise svg { color: var(--accent); flex-shrink: 0; }
 
 .dispatch-towns { display: flex; flex-wrap: wrap; gap: 0.7rem; }
 .town-chip {
@@ -748,7 +748,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 .form-field select:focus,
 .form-field textarea:focus {
   outline: none;
-  border-color: var(--orange);
+  border-color: var(--orange-dark);
   background: #fffdf8;
 }
 .form-field textarea { resize: vertical; min-height: 90px; }
@@ -768,7 +768,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   transition: border-color 0.25s ease, background 0.25s ease;
 }
 .dropzone svg { color: var(--orange-dark); }
-.dropzone.is-dragover { border-color: var(--orange); background: rgba(255, 106, 19, 0.06); }
+.dropzone.is-dragover { border-color: var(--orange-dark); background: rgba(255, 106, 19, 0.06); }
 .dropzone p { font-size: 0.85rem; margin: 0; }
 .dropzone span { color: var(--orange-dark); font-weight: 600; }
 .dropzone-input {
@@ -817,7 +817,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   border-bottom: 1px solid var(--border);
 }
 
-.footer-logo { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; color: var(--orange); }
+.footer-logo { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; color: var(--accent); }
 .footer-logo span { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 1.1rem; color: var(--text); text-transform: uppercase; }
 
 .footer-brand p { color: var(--muted); font-size: 0.88rem; line-height: 1.55; max-width: 32ch; margin-bottom: 0.8rem; }
@@ -826,14 +826,14 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 .footer-col h4 {
   font-size: 0.72rem;
   letter-spacing: 0.14em;
-  color: var(--orange);
+  color: var(--accent);
   margin-bottom: 1.1rem;
 }
 .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
 .footer-col button,
 .footer-col a { font-size: 0.88rem; color: var(--muted); transition: color 0.2s ease; }
 .footer-col button:hover,
-.footer-col a:hover { color: var(--orange); }
+.footer-col a:hover { color: var(--accent); }
 .footer-contact li { font-size: 0.88rem; color: var(--muted); }
 
 .footer-bottom {
