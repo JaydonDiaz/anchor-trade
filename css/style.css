@@ -414,7 +414,14 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.3rem;
+  margin: 0 auto 0.3rem;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.3s ease;
+}
+.trade-card:hover .trade-card-icon,
+.trade-card:focus-visible .trade-card-icon {
+  background: var(--orange-dark);
+  color: var(--cream-text);
+  transform: scale(1.08) rotate(-4deg);
 }
 
 .trade-card-tag { font-size: 0.68rem; letter-spacing: 0.16em; color: var(--kraft); }
