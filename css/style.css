@@ -389,7 +389,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 20px 46px var(--shadow-ink);
+  box-shadow: none;
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
