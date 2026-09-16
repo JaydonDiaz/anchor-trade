@@ -281,7 +281,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   grid-template-columns: 1.15fr 0.85fr;
   gap: 3rem;
   align-items: center;
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   width: 100%;
   padding-bottom: 3rem;
@@ -352,7 +352,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 }
 
 .trades-head {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 4rem) 2.4rem;
   display: flex;
@@ -458,11 +458,11 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   padding: clamp(4rem, 9vh, 6.5rem) clamp(1.5rem, 5vw, 4rem);
 }
 
-.process-head { max-width: 1400px; margin: 0 auto 3.5rem; }
+.process-head { max-width: 1440px; margin: 0 auto 3.5rem; }
 
 .process-stubs {
   position: relative;
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -522,7 +522,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 }
 
 .stats-grid {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -555,10 +555,10 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   padding: clamp(4rem, 9vh, 6.5rem) clamp(1.5rem, 5vw, 4rem);
 }
 
-.gallery-head { max-width: 1400px; margin: 0 auto 3rem; }
+.gallery-head { max-width: 1440px; margin: 0 auto 3rem; }
 
 .gallery-grid {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -592,7 +592,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 }
 
 .dispatch-inner {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -633,10 +633,10 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   padding: clamp(4rem, 9vh, 6.5rem) clamp(1.5rem, 5vw, 4rem);
 }
 
-.reviews-head { max-width: 1400px; margin: 0 auto 3rem; }
+.reviews-head { max-width: 1440px; margin: 0 auto 3rem; }
 
 .reviews-grid {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -682,7 +682,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 }
 
 .quote-inner {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
@@ -806,7 +806,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 }
 
 .footer-grid {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr;
@@ -835,7 +835,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 .footer-contact li { font-size: 0.88rem; color: var(--muted); }
 
 .footer-bottom {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   padding-top: 1.5rem;
   display: flex;
