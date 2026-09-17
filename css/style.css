@@ -3,8 +3,7 @@
    ============================================================ */
 
 :root {
-  --rail-w: 84px;
-  --rail-w-mobile: 64px;
+  --navbar-h: 72px;
 
   /* brand constants (do not flip with theme) */
   --ink: #181614;
@@ -66,6 +65,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   transition: background 0.35s ease, color 0.35s ease;
 }
+body.menu-open { overflow: hidden; }
 img { max-width: 100%; display: block; }
 ul { list-style: none; margin: 0; padding: 0; }
 a { color: inherit; text-decoration: none; }
@@ -130,112 +130,158 @@ svg { display: block; flex-shrink: 0; }
 }
 
 /* ============================================================
-   RAIL — persistent nav, replaces top navbar
+   NAVBAR
    ============================================================ */
 
-.rail {
+.navbar {
   position: fixed;
   z-index: 100;
-  background: var(--ink);
-  border-right: 1px solid var(--line-on-ink);
-  display: flex;
   top: 0;
   left: 0;
-  bottom: 0;
-  width: var(--rail-w);
-  flex-direction: column;
-  align-items: center;
-  padding: 1.4rem 0 1.2rem;
+  right: 0;
+  background: var(--ink);
+  border-bottom: 1px solid var(--line-on-ink);
 }
 
-.rail-logo {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+.navbar-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: var(--navbar-h);
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.navbar-logo:hover { transform: scale(1.02); }
+
+.navbar-logo-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   background: var(--orange);
   color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-bottom: 1.6rem;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.rail-logo:hover { transform: rotate(-8deg) scale(1.06); }
 
-.rail-trades {
+.navbar-logo-text {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--cream-text);
+  white-space: nowrap;
+}
+
+.navbar-links {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  align-items: center;
+  gap: 1.8rem;
   flex: 1;
 }
 
-.rail-icon {
-  position: relative;
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
+.navbar-link {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rail-muted);
+  transition: color 0.2s ease;
+}
+.navbar-link:hover { color: var(--cream-text); }
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.navbar-phone {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--rail-muted);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.navbar-phone:hover { color: var(--orange); }
+
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--rail-muted);
-  transition: color 0.25s ease, background 0.25s ease;
+  flex-shrink: 0;
+  transition: color 0.2s ease, background 0.2s ease;
 }
-.rail-icon:hover { color: var(--cream-text); background: rgba(245, 241, 232, 0.06); }
-.rail-icon.is-active { color: var(--orange); background: rgba(255, 106, 19, 0.12); }
+.theme-toggle:hover { color: var(--cream-text); background: rgba(245, 241, 232, 0.08); }
 
-.rail-tip {
-  position: absolute;
-  left: calc(100% + 12px);
-  top: 50%;
-  transform: translateY(-50%) translateX(-6px);
-  background: var(--ink);
-  border: 1px solid var(--line-on-ink);
-  color: var(--cream-text);
-  font-family: 'Space Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-  padding: 0.4rem 0.7rem;
-  border-radius: 6px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-.rail-icon:hover .rail-tip,
-.rail-icon:focus-visible .rail-tip {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
-}
+.navbar-cta { padding: 0.7rem 1.4rem; font-size: 0.82rem; }
 
-.rail-bottom {
-  display: flex;
+.navbar-burger {
+  display: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
-  padding-top: 0.6rem;
-  border-top: 1px solid var(--line-on-ink);
-  width: 100%;
+  justify-content: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.navbar-burger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--cream-text);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.navbar-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.navbar-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.navbar-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  padding: 0.6rem clamp(1.5rem, 5vw, 3rem) 1.4rem;
+  background: var(--ink);
+  border-bottom: 1px solid var(--line-on-ink);
+  min-height: calc(100vh - var(--navbar-h));
+  overflow-y: auto;
 }
 
-.rail-icon--util { color: var(--rail-muted); }
-
-.rail-cta {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  margin-top: 0.6rem;
-  padding: 1rem 0.55rem;
-  background: var(--orange);
-  color: var(--ink);
-  border-radius: 999px;
+.mobile-link {
   font-family: 'Oswald', sans-serif;
-  font-weight: 600;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  transition: background 0.25s ease, transform 0.25s ease;
+  color: var(--cream-text);
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line-on-ink);
 }
-.rail-cta:hover { background: var(--orange-dark); transform: scale(1.04); }
+.mobile-link--phone { color: var(--orange); font-family: 'Space Mono', monospace; text-transform: none; }
+
+.mobile-cta { margin-top: 1rem; width: 100%; }
 
 .theme-icon--sun, .theme-icon--moon { display: none; }
 html[data-theme="dark"] .theme-icon--sun,
@@ -248,7 +294,7 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
    MAIN offset
    ============================================================ */
 
-.main { margin-left: var(--rail-w); }
+.main { padding-top: var(--navbar-h); }
 
 /* ============================================================
    HERO
@@ -355,34 +401,19 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 5vw, 4rem) 2.4rem;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
   border-bottom: 1px solid var(--border);
 }
 
-.trades-scroll-hint { color: var(--muted-2); font-size: 0.78rem; letter-spacing: 0.1em; }
-
-.trades-pin {
-  position: relative;
-  overflow: hidden;
-  height: 640px;
-  display: flex;
-  align-items: center;
-}
-
-.trades-track {
-  display: flex;
+.trades-grid {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2.5rem clamp(1.5rem, 5vw, 4rem) clamp(3rem, 7vh, 5rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
-  padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
-  will-change: transform;
 }
 
 .trade-card {
-  flex: 0 0 auto;
-  width: min(78vw, 420px);
   background: var(--paper);
   color: var(--ink-text);
   border-radius: 18px;
@@ -415,6 +446,9 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   align-items: center;
   justify-content: center;
   margin: 0 auto 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   transition: background 0.25s ease, color 0.25s ease, transform 0.3s ease;
 }
 .trade-card:hover .trade-card-icon,
@@ -937,6 +971,8 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
   .hero-tickets { margin-top: 1rem; }
   .hero-ticket { width: 100%; max-width: none; margin-left: 0; }
 
+  .trades-grid { grid-template-columns: repeat(2, 1fr); }
+
   .process-stubs { grid-template-columns: repeat(2, 1fr); }
   .stub-thread { display: none; }
 
@@ -954,45 +990,15 @@ html[data-theme="light"] .theme-icon--sun { display: none; }
 }
 
 @media (max-width: 899px) {
-  :root { --rail-w: 0px; }
-
-  .rail {
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: var(--rail-w-mobile);
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
-    border-right: none;
-    border-top: 1px solid var(--line-on-ink);
-  }
-  .rail-logo { margin-bottom: 0; width: 34px; height: 34px; border-radius: 9px; }
-  .rail-trades { display: none; }
-  .rail-bottom {
-    flex-direction: row;
-    border-top: none;
-    padding-top: 0;
-    width: auto;
-    gap: 0.6rem;
-  }
-  .rail-cta { writing-mode: horizontal-tb; transform: none; margin-top: 0; padding: 0.6rem 1.1rem; font-size: 0.72rem; }
-  .rail-tip { display: none; }
-
-  .main { margin-left: 0; padding-bottom: var(--rail-w-mobile); }
+  .navbar-links { display: none; }
+  .navbar-phone { display: none; }
+  .navbar-cta { display: none; }
+  .navbar-burger { display: flex; }
+  .mobile-menu:not([hidden]) { display: flex; }
 
   .hero-title { font-size: clamp(3rem, 13vw, 4.2rem); }
 
-  .trades-pin { height: auto; overflow: visible; }
-  .trades-track {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 0.5rem clamp(1.5rem, 5vw, 4rem) 1rem;
-  }
-  .trade-card { scroll-snap-align: start; width: 82vw; }
+  .trades-grid { grid-template-columns: 1fr; padding-top: 2rem; }
 
   .process-stubs { grid-template-columns: 1fr; }
 

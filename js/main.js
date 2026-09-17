@@ -4,20 +4,28 @@
   gsap.registerPlugin(ScrollTrigger);
 
   /* ============================================================
-     Rail active-state helpers
+     Navbar — mobile menu toggle
      ============================================================ */
 
-  var railIcons = document.querySelectorAll('.rail-trades .rail-icon');
+  var navbarBurger = document.getElementById('navbar-burger');
+  var mobileMenu = document.getElementById('mobile-menu');
 
-  function setActiveRail(index) {
-    railIcons.forEach(function (icon, i) {
-      icon.classList.toggle('is-active', i === index);
-    });
+  function closeMobileMenu() {
+    if (!mobileMenu || mobileMenu.hidden) return;
+    mobileMenu.hidden = true;
+    if (navbarBurger) navbarBurger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
   }
 
-  function clearActiveRail() {
-    railIcons.forEach(function (icon) {
-      icon.classList.remove('is-active');
+  if (navbarBurger && mobileMenu) {
+    navbarBurger.addEventListener('click', function () {
+      var isOpen = !mobileMenu.hidden;
+      mobileMenu.hidden = isOpen;
+      navbarBurger.setAttribute('aria-expanded', String(!isOpen));
+      document.body.classList.toggle('menu-open', !isOpen);
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMobileMenu);
     });
   }
 
@@ -27,7 +35,7 @@
 
   var TRADE_INFO = [
     {
-      icon: 'icon-bolt',
+      code: 'EL',
       name: 'Electrical',
       formValue: 'Electrical',
       body: "From flickering lights to a full panel upgrade, our licensed electricians handle residential work safely and up to code. Every job is permitted where required and backed by our 12-month guarantee.",
@@ -40,7 +48,7 @@
       ]
     },
     {
-      icon: 'icon-drop',
+      code: 'PL',
       name: 'Plumbing',
       formValue: 'Plumbing',
       body: "Leaks, clogs, and failing fixtures don't wait for a convenient time. We diagnose the problem on-site and quote a flat rate before any work starts — no surprise charges once the wall's already open.",
@@ -53,7 +61,7 @@
       ]
     },
     {
-      icon: 'icon-hammer',
+      code: 'CP',
       name: 'Carpentry',
       formValue: 'Carpentry',
       body: 'Trim work, built-ins, and structural repairs need a steady hand and the right tools — both of which our carpenters bring on every visit, from a loose stair tread to a full deck rebuild.',
@@ -66,7 +74,7 @@
       ]
     },
     {
-      icon: 'icon-roller',
+      code: 'PT',
       name: 'Painting',
       formValue: 'Painting',
       body: "A fresh coat done right starts with prep — patched walls, taped edges, and primer where it's needed. We bring drop cloths and clean up after ourselves, whether it's one accent wall or a full exterior.",
@@ -79,7 +87,7 @@
       ]
     },
     {
-      icon: 'icon-patch',
+      code: 'DW',
       name: 'Drywall & Patching',
       formValue: 'Drywall & Patching',
       body: "Holes, cracks, and water damage patched so the repair disappears — not just fills in. We match existing texture (orange peel, knockdown, smooth) so there's no visible seam once it's painted.",
@@ -92,7 +100,7 @@
       ]
     },
     {
-      icon: 'icon-tile',
+      code: 'TL',
       name: 'Tile & Flooring',
       formValue: 'Tile & Flooring',
       body: 'From a cracked bathroom tile to a full kitchen backsplash, we handle layout, cutting, and grout work with a level eye and clean lines. Luxury vinyl plank and subfloor repair are on the truck too.',
@@ -110,7 +118,7 @@
   var tradeModalBackdrop = document.getElementById('trade-modal-backdrop');
   var tradeModalPanel = tradeModal ? tradeModal.querySelector('.trade-modal-panel') : null;
   var tradeModalClose = document.getElementById('trade-modal-close');
-  var tradeModalIconUse = document.getElementById('trade-modal-icon-use');
+  var tradeModalIconText = document.getElementById('trade-modal-icon-text');
   var tradeModalTitle = document.getElementById('trade-modal-title');
   var tradeModalBody = document.getElementById('trade-modal-body');
   var tradeModalList = document.getElementById('trade-modal-list');
@@ -122,7 +130,7 @@
     var info = TRADE_INFO[index];
     if (!info || !tradeModal) return;
 
-    tradeModalIconUse.setAttribute('href', '#' + info.icon);
+    if (tradeModalIconText) tradeModalIconText.textContent = info.code;
     tradeModalTitle.textContent = info.name;
     tradeModalBody.textContent = info.body;
     tradeModalList.innerHTML = '';
@@ -182,19 +190,7 @@
     var cards = document.querySelectorAll('.trade-card');
     var card = cards[index];
     if (!card) return;
-
-    if (window.innerWidth < 900) {
-      var tradesSection = document.getElementById('trades');
-      if (tradesSection) tradesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      return;
-    }
-
-    var st = ScrollTrigger.getById('tradesPin');
-    if (!st) return;
-    var progress = cards.length > 1 ? index / (cards.length - 1) : 0;
-    var target = st.start + progress * (st.end - st.start);
-    window.scrollTo({ top: target, behavior: 'smooth' });
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   document.querySelectorAll('[data-trade-index]').forEach(function (btn) {
@@ -217,47 +213,15 @@
   });
 
   /* ============================================================
-     Horizontal pinned trades strip (desktop only)
+     Trades grid reveal
      ============================================================ */
 
-  var mm = gsap.matchMedia();
-
-  mm.add('(min-width: 900px)', function () {
-    var track = document.getElementById('trades-track');
-    var wrap = document.querySelector('.trades-pin');
-    var cards = gsap.utils.toArray('.trade-card');
-    if (!track || !wrap || !cards.length) return;
-
-    function getMaxX() {
-      return Math.max(0, track.scrollWidth - wrap.offsetWidth);
-    }
-
-    var tween = gsap.to(track, {
-      x: function () { return -getMaxX(); },
-      ease: 'none',
-      scrollTrigger: {
-        id: 'tradesPin',
-        trigger: '.trades-pin',
-        start: 'top top',
-        end: function () { return '+=' + getMaxX(); },
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: function (self) {
-          var idx = Math.min(cards.length - 1, Math.floor(self.progress * cards.length));
-          setActiveRail(idx);
-        },
-        onLeave: clearActiveRail,
-        onLeaveBack: clearActiveRail
-      }
+  gsap.utils.toArray('.trade-card').forEach(function (card, i) {
+    gsap.from(card, {
+      opacity: 0, y: 30, duration: 0.6, ease: 'power3.out',
+      scrollTrigger: { trigger: card, start: 'top 90%' },
+      delay: (i % 3) * 0.08
     });
-
-    return function () {
-      if (tween.scrollTrigger) tween.scrollTrigger.kill();
-      tween.kill();
-      clearActiveRail();
-    };
   });
 
   /* ============================================================
