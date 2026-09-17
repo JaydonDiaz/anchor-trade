@@ -148,7 +148,8 @@ svg { display: block; flex-shrink: 0; }
   margin: 0 auto;
   height: var(--navbar-h);
   padding: 0 clamp(1.5rem, 5vw, 3rem);
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 2.2rem;
 }
@@ -187,8 +188,8 @@ svg { display: block; flex-shrink: 0; }
 .navbar-links {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.8rem;
-  flex: 1;
 }
 
 .navbar-link {
