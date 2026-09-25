@@ -50,6 +50,13 @@ html[data-theme="light"] {
   --shadow: var(--shadow-paper);
 }
 
+/* ---- Theme toggle crossfade (View Transitions API, see js/theme.js) ---- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* ============================================================
    Reset / base
    ============================================================ */

@@ -10,8 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
   toggle.addEventListener('click', function () {
     var current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
     var next = current === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    document.dispatchEvent(new CustomEvent('themechange', { detail: { theme: next } }));
+    function apply() {
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      document.dispatchEvent(new CustomEvent('themechange', { detail: { theme: next } }));
+    }
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && document.startViewTransition) {
+      document.startViewTransition(apply);
+    } else {
+      apply();
+    }
   });
 });
