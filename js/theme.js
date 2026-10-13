@@ -4,6 +4,13 @@
   document.documentElement.setAttribute('data-theme', theme);
 })();
 
+// Reload always starts at the top instead of the browser restoring
+// wherever you were scrolled to — avoids any pinned/scroll-driven
+// section's layout math racing a native scroll restore.
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   var toggle = document.getElementById('theme-toggle');
   if (!toggle) return;
